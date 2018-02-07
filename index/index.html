@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../css/style/style.css">
+
+ 
+</head>
+<body>
+
+<div id="topics">
+
+  </div>
+
+
+<button data-topics="health" id= "health" class="button"> health</button>
+
+<button data-topics="comedy"  id ="comedy" class="button">comedy</button>
+
+<button data-topics="news" id= "news"  class="button">news</button>
+
+<button data-topics="religion"  id = "religion" class="button">religion</button>
+
+<button data-topics="music"  id = "music" class="button">music</button>
+
+
+
+
+
+<script>
+
+var topics = [ "health" , "music", "comedy" ,"news"  ,"religion"]
+
+$(".button").on("click", function() {
+  event.preventDefault();
+
+// Grabbing and storing the data-topics property value from the button
+  var topics = $(this).attr("data-topics");
+
+//Constructing a queryURL using these topics
+
+     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics +"&api_key=D18YV8aiy5oTLemvfyQTbelr7t7Os0SP&limit=10&rating=g"
+
+       
+$.ajax({
+
+url: queryURL,
+
+method: "GET"
+
+ })
+
+  // After data comes back from the request
+.done(function(response) {
+
+
+ console.log(queryURL);
+
+
+
+console.log(response);
+})
+ })
+
+/*
+
+// loop thru results from the server
+for each results ,create image div and setting the source
+
+      
+
+
+ 
+
+   
+
+
+  // storing the data from the AJAX request in the results variable
+
+ var results = response.data;
+
+
+
+
+for (i=0;i<topics.length; i++) {
+	
+// Creating a paragraph tag with the result item's rating
+
+            var p = $("<p>").text("Rating: " + results[i].rating);
+
+}
+
+// Appending the paragraph and image tag to the topics Div
+
+            topicsDiv.append(p);
+
+            topicsDiv.append(topics Image);
+
+if (state === "still") {
+
+        $(this).attr("src", $(this).attr("data-animate"));
+
+        $(this).attr("data-state", "animate");
+
+      } else {
+
+        $(this).attr("src", $(this).attr("data-still"));
+
+        $(this).attr("data-state", "still");
+
+      }
+
+    });
+
+
+
+  //create a form to make an input
+//<form  id = "topics">make a choice 
+//<input type="text"> 
+//<input type= "submit"
+//value="submit">
+//<button>  </button>
+
+//</form>
+
+
+//to capture the value of the user input on the form 
+var userInput = $("#topics").val().trim();
+
+//clear the text box when done
+
+$("#topics").val("");
+
+// to add the value of user input to the topics array
+
+ topics.push(["userinput"])
+
+
+
+
+
+      console.log(userInput);
+
+    */ 
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
